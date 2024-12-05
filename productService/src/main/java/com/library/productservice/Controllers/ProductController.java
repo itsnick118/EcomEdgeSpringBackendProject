@@ -59,12 +59,12 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponseDTO> getProductById(@PathVariable("id") Long id,  @RequestHeader ("authToken") String token) throws ProductNotFoundException {
-        UserDto userDto= authCommons.validateToken(token);
+    public ResponseEntity<ProductResponseDTO> getProductById(@PathVariable("id") Long id) throws ProductNotFoundException {
+      /*  UserDto userDto= authCommons.validateToken(token);
 
         if(userDto== null){
             return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
-        }
+        }*/
         ProductResponseDTO product = productService.getProductById(id);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }

@@ -50,13 +50,14 @@ import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig {
 
-   /* @Bean
+    @Bean
     @Order(1)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
             throws Exception {
+        System.out.println("In security filterchain userservice");
         OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
         http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
-                .oidc(Customizer.withDefaults());	// Enable OpenID Connect 1.0
+                .oidc(Customizer.withDefaults());    // Enable OpenID Connect 1.0
         http
                 // Redirect to the login page when not authenticated from the
                 // authorization endpoint
@@ -79,20 +80,20 @@ public class SecurityConfig {
             throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
                 )
                 // Form login handles the redirect to the login page from the
                 // authorization server filter chain
                 .formLogin(Customizer.withDefaults());
 
         return http.build();
-    }*/
+    }
 
 //    @Bean
 //    public UserDetailsService userDetailsService() {
 //        UserDetails userDetails = User.builder()
 //                .username("user")
-//                .password("$2a$12$KwqbJeuEP8VF.Rm.gS7BweHYL6bNZCQ/s.xNyR2ZueMNRq65ZxA4q")
+//                .password("$2a$12$BnfzwkC6F87/wpGBCCv5h.CwXYDP9sXPKDRLh9BGCSmLQKFfIlxou")
 //                .roles("USER")
 //                .build();
 //
@@ -102,13 +103,13 @@ public class SecurityConfig {
 //    @Bean
 //    public RegisteredClientRepository registeredClientRepository() {
 //        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
-//                .clientId("oidc-client")
-//                .clientSecret("$2a$12$jFwVAhTw7Fcvw/BsPLtCAOBjEQjm8wRrxWCJayKgUzqG76MURW5Tu")
+//                .clientId("oidc-client") // scaler
+//                .clientSecret("$2a$12$G2ZP0f0AZdWxCHPVp8Y75ueMJVtjreFE/9uSqBDxqs9QoC9/cLndu")
 //                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
 //                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 //                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-//                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
-//                .postLogoutRedirectUri("http://127.0.0.1:8080/")
+//                .redirectUri("https://oauth.pstmn.io/v1/callback")
+//                .postLogoutRedirectUri("https://oauth.pstmn.io/v1/callback")
 //                .scope(OidcScopes.OPENID)
 //                .scope(OidcScopes.PROFILE)
 //                .scope("ADMIN")
@@ -117,14 +118,6 @@ public class SecurityConfig {
 //
 //        return new InMemoryRegisteredClientRepository(oidcClient);
 //    }
-
-    @Bean
-    public SecurityFilterChain getSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.cors().disable();
-        httpSecurity.csrf().disable();
-        httpSecurity.authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll());
-        return httpSecurity.build();
-    }
 
     @Bean
     public JWKSource<SecurityContext> jwkSource() {
@@ -145,8 +138,7 @@ public class SecurityConfig {
             KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
             keyPairGenerator.initialize(2048);
             keyPair = keyPairGenerator.generateKeyPair();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             throw new IllegalStateException(ex);
         }
         return keyPair;
@@ -162,8 +154,7 @@ public class SecurityConfig {
         return AuthorizationServerSettings.builder().build();
     }
 
-    // this bean is added to Add roles to the access token
-    @Bean
+   /* @Bean
     public OAuth2TokenCustomizer<JwtEncodingContext> jwtTokenCustomizer() {
         return (context) -> {
             if (OAuth2TokenType.ACCESS_TOKEN.equals(context.getTokenType())) {
@@ -173,13 +164,11 @@ public class SecurityConfig {
                             .map(c -> c.replaceFirst("^ROLE_", ""))
                             .collect(Collectors.collectingAndThen(Collectors.toSet(), Collections::unmodifiableSet));
                     claims.put("roles", roles);
-                    claims.put("userId", context.getPrincipal().getAuthorities());
+                    //claims.put("userId", userId)
+                    //TODO: Add userId in the token.
                 });
-                //TODO: Add the user id to the access token
             }
         };
-    }
-
-
+    }*/
 
 }
