@@ -5,27 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e90cb45-d116-46dc-8f37-6ddccb0760df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/library/apigateway/ApiGatewayApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/library/apigateway/ApiGatewayApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../productService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Config/RestTemplateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Config/RestTemplateConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Controllers/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../productService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../userService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Configs/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Configs/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../userService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../userService/src/test/java/com/library/userservice/UserServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/test/java/com/library/userservice/UserServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/library/apigateway/ApiGatewayApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/library/apigateway/ApiGatewayApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +67,7 @@
     &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/manojbhosale/WorkSpace/Project/Spring/SpringDevlopmentProject/MicroServices/APIGateway&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/manojbhosale/WorkSpace/Project/Spring/SpringDevlopmentProject/MicroServices/ApiGateway&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -88,20 +77,11 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
-      <setting name="path" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="APIGateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.library.apigateway.ApiGatewayApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -130,7 +110,7 @@
       <workItem from="1733255136781" duration="68000" />
       <workItem from="1733255243215" duration="687000" />
       <workItem from="1733314420549" duration="101000" />
-      <workItem from="1733314547136" duration="667000" />
+      <workItem from="1733314547136" duration="670000" />
     </task>
     <servers />
   </component>
