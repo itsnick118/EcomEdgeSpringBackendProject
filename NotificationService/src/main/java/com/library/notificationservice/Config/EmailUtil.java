@@ -55,7 +55,7 @@ public class EmailUtil {
             System.out.println("EMail Sent Successfully!!");
         }
         catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to send email", e);
         }
     }
 }

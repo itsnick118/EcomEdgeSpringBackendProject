@@ -80,14 +80,17 @@ public class SecurityConfig {
             throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll() // Allow all requests without authentication
                 )
-                // Form login handles the redirect to the login page from the
-                // authorization server filter chain
+                .csrf(csrf -> {
+                    csrf.disable(); // Disable CSRF protection
+                })
+                // Enable form-based login with default configurations
                 .formLogin(Customizer.withDefaults());
 
         return http.build();
     }
+
 
 //    @Bean
 //    public UserDetailsService userDetailsService() {

@@ -19,7 +19,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<OrderResponseDTO> placeOrder(@RequestBody OrderRequestDTO orderRequestDTO) throws ProductNotFoundException {
         OrderResponseDTO orderResponse = orderService.placeOrder(orderRequestDTO);
         return new ResponseEntity<>(orderResponse, HttpStatus.CREATED);
@@ -30,5 +30,4 @@ public class OrderController {
         OrderResponseDTO orderResponse = orderService.getOrderDetails(id);
         return new ResponseEntity<>(orderResponse, HttpStatus.OK);
     }
-
 }

@@ -10,50 +10,68 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Component
-@Primary
-public class StripePaymentGateway implements PaymentGateway{
+//@Primary
+public class StripePaymentGateway implements PaymentGateway {
     @Value("${STRIPE_KEY_SECRET}")
     private String stripeSecretKey;
 
     @Override
     public String generatePaymentLink(Long orderId, Long amount) throws StripeException {
-        //Call the Stripe API to generate the payment link.
         Stripe.apiKey = stripeSecretKey;
 
-        PriceCreateParams priceParams =
-                PriceCreateParams.builder()
-                        .setCurrency("INR")
-                        .setUnitAmount(amount * 100) // 10.00
-                        .setProductData(
-                                PriceCreateParams.ProductData.builder().setName("Gold Plan").build()
-                        )
-                        .build();
-
-
-        Price price = Price.create(priceParams);
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put("order_id", orderId.toString());
+        metadata.put("amount", amount.toString());
+        metadata.put("product_name", "Gold Plan");
 
         PaymentLinkCreateParams params =
                 PaymentLinkCreateParams.builder()
+                        .setPaymentIntentData(
+                                PaymentLinkCreateParams.PaymentIntentData.builder()
+                                        .putAllMetadata(metadata)  // This will ensure metadata is passed to PaymentIntent
+                                        .build()
+                        )
                         .addLineItem(
                                 PaymentLinkCreateParams.LineItem.builder()
-                                        .setPrice(price.getId())
+                                        .setPrice(createPrice(amount, metadata).getId())
                                         .setQuantity(1L)
                                         .build()
-                        ).setAfterCompletion(
+                        )
+                        .setAfterCompletion(
                                 PaymentLinkCreateParams.AfterCompletion.builder()
                                         .setRedirect(
                                                 PaymentLinkCreateParams.AfterCompletion.Redirect.builder()
-                                                        .setUrl("http://scaler.com")
+                                                        .setUrl("http://google.com")
                                                         .build()
                                         )
                                         .setType(PaymentLinkCreateParams.AfterCompletion.Type.REDIRECT)
                                         .build()
                         )
+                        .putAllMetadata(metadata)
                         .build();
 
         PaymentLink paymentLink = PaymentLink.create(params);
+        return paymentLink.getUrl();
+    }
 
-        return paymentLink.toString();
+    private Price createPrice(Long amount, Map<String, String> metadata) throws StripeException {
+        PriceCreateParams priceParams =
+                PriceCreateParams.builder()
+                        .setCurrency("INR")
+                        .setUnitAmount(amount * 100)
+                        .setProductData(
+                                PriceCreateParams.ProductData.builder()
+                                        .setName("Gold Plan")
+                                        .putAllMetadata(metadata)
+                                        .build()
+                        )
+                        .putAllMetadata(metadata)
+                        .build();
+
+        return Price.create(priceParams);
     }
 }

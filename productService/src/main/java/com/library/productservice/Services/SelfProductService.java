@@ -78,9 +78,12 @@ public class SelfProductService implements IProductService {
     }
 
     @Override
-    public List<ProductResponseDTO> getProducts(double minPrice, double maxPrice) {
+    public List<ProductResponseDTO> getProducts(double minPrice, double maxPrice) throws ProductsNotFoundException{
         List<ProductResponseDTO> productResponseDTOs = new ArrayList<>();
         List<Product> products = productRepository.findByPriceBetween(minPrice, maxPrice);
+        if (products.isEmpty()) {
+            throw new ProductsNotFoundException();
+        }
         for (Product product : products) {
             productResponseDTOs.add(ProductResponseDTO.from(product));
         }
@@ -113,10 +116,5 @@ public class SelfProductService implements IProductService {
         }
         throw new ProductNotFoundException("Product with id" + id + " not found.", id);
     }
-/*    <dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-			<version>4.1.1</version>
-		</dependency>*/
 
 }

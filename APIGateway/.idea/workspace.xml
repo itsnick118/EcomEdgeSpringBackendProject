@@ -5,21 +5,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e90cb45-d116-46dc-8f37-6ddccb0760df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/library/apigateway/ApiGatewayApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/library/apigateway/ApiGatewayApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/library/apigateway/Config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NotificationService/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../paymentGatewayService/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/DTO/OrderPaymentUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/Services/PaymentGatewaySelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/WebHook/RazorpayWebhook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/WebHook/StripeWebhook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/config/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/dto/OrderPaymentUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/src/test/java/com/library/productservice/Controllers/CategoryControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/src/test/java/com/library/productservice/Controllers/OrderControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/src/test/java/com/library/productservice/Services/CategoryServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/src/test/java/com/library/productservice/Services/OrderServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../userService/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Security/Repositories/RoleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NotificationService/src/main/java/com/library/notificationservice/Config/EmailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NotificationService/src/main/java/com/library/notificationservice/Config/EmailUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NotificationService/src/main/java/com/library/notificationservice/Config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NotificationService/src/main/java/com/library/notificationservice/Config/SendEmailEventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NotificationService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../NotificationService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../paymentGatewayService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../paymentGatewayService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/Controllers/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/Controllers/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/DTO/InitiatePaymentRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/DTO/InitiatePaymentRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/PaymentGateway/RazorpayPaymentGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/PaymentGateway/RazorpayPaymentGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/PaymentGateway/StripePaymentGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/PaymentGateway/StripePaymentGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/Services/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/java/com/library/paymentgatewayservice/Services/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../paymentGatewayService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../paymentGatewayService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Controllers/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Controllers/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Services/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Services/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Services/SelfProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/Services/SelfProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/library/productservice/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/test/java/com/library/productservice/Controllers/ProductControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/test/java/com/library/productservice/Controllers/ProductControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/test/java/com/library/productservice/Services/SelfProductServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/test/java/com/library/productservice/Services/SelfProductServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Configs/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Configs/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Dto/SignUpRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Dto/SignUpRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Security/Services/JpaRegisteredClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Security/Services/JpaRegisteredClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/main/java/com/library/userservice/Services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../userService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../userService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Dockerfile" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -54,28 +99,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Maven.APIGateway [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.APIGateway [install].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/manojbhosale/WorkSpace/Project/Spring/SpringDevlopmentProject/MicroServices/ApiGateway&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Maven.APIGateway [clean].executor": "Run",
+    "Maven.APIGateway [install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ApiGatewayApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/manojbhosale/WorkSpace/Project/Spring/ScalerProject/EcomEdgeSpringBackendProject/APIGateway",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RunManager">
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-19" />
@@ -111,6 +159,11 @@
       <workItem from="1733255243215" duration="687000" />
       <workItem from="1733314420549" duration="101000" />
       <workItem from="1733314547136" duration="670000" />
+      <workItem from="1733673721289" duration="1747000" />
+      <workItem from="1733909845149" duration="14483000" />
+      <workItem from="1734092316704" duration="1471000" />
+      <workItem from="1734164922674" duration="16438000" />
+      <workItem from="1734447891092" duration="16727000" />
     </task>
     <servers />
   </component>
@@ -119,5 +172,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/library/apigateway/Config/SecurityConfig.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

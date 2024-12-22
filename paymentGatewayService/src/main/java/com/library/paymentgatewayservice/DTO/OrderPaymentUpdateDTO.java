@@ -3,9 +3,9 @@ package com.library.paymentgatewayservice.DTO;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
-public class InitiatePaymentRequestDto {
+@Getter
+public class OrderPaymentUpdateDTO {
     private Long orderId;
-    private Long amount;
+    private String message;
 }

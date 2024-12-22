@@ -1,7 +1,9 @@
 package com.library.paymentgatewayservice.Controllers;
 
 import com.library.paymentgatewayservice.DTO.InitiatePaymentRequestDto;
+import com.library.paymentgatewayservice.PaymentGateway.StripePaymentGateway;
 import com.library.paymentgatewayservice.Services.PaymentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 public class PaymentController {
 
     private PaymentService paymentService;
+    @Autowired
+    private StripePaymentGateway stripePaymentGateway;
 
     public PaymentController(PaymentService paymentService) {
         this.paymentService = paymentService;
@@ -22,13 +26,7 @@ public class PaymentController {
                     requestDto.getAmount()
             );
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new RuntimeException("Unexpected error occurred while initiating payment", e);
         }
-        return "it is returning null please check";
-    }
-
-    @GetMapping("/sample")
-    public String sampleAPI() {
-        return "Hello from Scaler";
     }
 }

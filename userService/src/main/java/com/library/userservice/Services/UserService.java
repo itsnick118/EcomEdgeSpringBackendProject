@@ -41,7 +41,8 @@ public class UserService {
 
     public User signUp(String email,
                        String name,
-                       String password) {
+                       String password,
+                       String role) {
         User user = new User();
         user.setEmail(email);
         user.setName(name);
@@ -56,13 +57,13 @@ public class UserService {
         sendEmailMessageDto.setFrom(savedUser.getEmail());
         sendEmailMessageDto.setBody("User with email "+ savedUser.getEmail() + " registered successfully");
 
-       /* try {
+        try {
             kafkaTemplate.send(
                     "sendEmail",
                     objectMapper.writeValueAsString(sendEmailMessageDto));
         } catch (Exception e) {
             System.out.println("Exception occurred while sending email");
-        }*/
+        }
         return savedUser;
     }
 

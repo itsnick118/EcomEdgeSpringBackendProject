@@ -3,8 +3,6 @@ package com.library.productservice.Controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.library.productservice.Interface.IProductService;
-import com.library.productservice.Models.Product;
-import com.library.productservice.Repostories.ProductRepository;
 import com.library.productservice.dto.CreateProductRequestDTO;
 import com.library.productservice.dto.ProductResponseDTO;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +19,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -45,7 +44,25 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void getAllProduct_success() throws Exception {
+    public void getProductById_success() throws Exception {
+        ProductResponseDTO mockProduct = new ProductResponseDTO();
+        mockProduct.setId(1L);
+        mockProduct.setTitle("Product1");
+        mockProduct.setDescription("Description1");
+        mockProduct.setPrice(10.0);
+
+        when(productService.getProductById(1L))
+                .thenReturn(mockProduct);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/products/1")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value("Product1"));
+    }
+
+    @Test
+    public void getAllProducts_success() throws Exception {
         ProductResponseDTO product1 = new ProductResponseDTO();
         product1.setId(1L);
         product1.setTitle("Product1");
@@ -60,10 +77,10 @@ public class ProductControllerTest {
 
         List<ProductResponseDTO> mockProducts = Arrays.asList(product1, product2);
 
-        Mockito.when(productService.getAllProducts()).thenReturn(mockProducts);
+        when(productService.getAllProducts()).thenReturn(mockProducts);
 
         mockMvc.perform(MockMvcRequestBuilders
-                        .get("/products/all")
+                        .get("/products/")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
@@ -72,50 +89,31 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void getProductById_success() throws Exception {
-        ProductResponseDTO mockProduct = new ProductResponseDTO();
-        mockProduct.setId(1L);
-        mockProduct.setTitle("Product1");
-        mockProduct.setDescription("Description1");
-        mockProduct.setPrice(10.0);
-
-        Mockito.when(productService.getProductById(1L))
-                .thenReturn(mockProduct);
-
-        mockMvc.perform(MockMvcRequestBuilders
-                        .get("/products/1")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value("Product1"));
-    }
-
-  /*  @Test
-    public void getProductById_ThrowsException() throws Exception {
-        Mockito.when(productService.getProductById(1L))
-                .thenReturn(null);
-
-        mockMvc.perform(MockMvcRequestBuilders
-                        .get("/products/1")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.message").value("Product not found"));
-    }*/
-
-    @Test
     public void createProduct_success() throws Exception {
-        Product mockProduct = new Product();
-        mockProduct.setId(1L);
-        mockProduct.setTitle("Product1");
-        mockProduct.setDescription("Description1");
-        mockProduct.setPrice(10.0);
+        CreateProductRequestDTO createProductRequest = new CreateProductRequestDTO();
+        createProductRequest.setTitle("Product1");
+        createProductRequest.setDescription("Description1");
+        createProductRequest.setPrice(10.0);
+        createProductRequest.setImage("image1.png");
+        createProductRequest.setCategoryId(1L);
 
-        Mockito.when(productService.createProduct(ArgumentMatchers.any(CreateProductRequestDTO.class))).thenReturn(ProductResponseDTO.from(mockProduct));
+        ProductResponseDTO mockProductResponse = new ProductResponseDTO();
+        mockProductResponse.setId(1L);
+        mockProductResponse.setTitle("Product1");
+        mockProductResponse.setDescription("Description1");
+        mockProductResponse.setPrice(10.0);
 
-        mockMvc.perform(post("/products")
+        when(productService.createProduct(ArgumentMatchers.any(CreateProductRequestDTO.class)))
+                .thenReturn(mockProductResponse);
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/products/")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(mockProduct)))
+                        .content(objectMapper.writeValueAsString(createProductRequest)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value(mockProduct.getTitle()));
+                .andExpect(jsonPath("$.id").value(mockProductResponse.getId()))
+                .andExpect(jsonPath("$.title").value(mockProductResponse.getTitle()))
+                .andExpect(jsonPath("$.description").value(mockProductResponse.getDescription()))
+                .andExpect(jsonPath("$.price").value(mockProductResponse.getPrice()));
     }
 
     @Test
@@ -126,7 +124,7 @@ public class ProductControllerTest {
         mockProduct.setDescription("Description1");
         mockProduct.setPrice(10.0);
 
-        Mockito.when(productService.updateProduct(anyLong(), ArgumentMatchers.any(CreateProductRequestDTO.class))).thenReturn(mockProduct);
+        when(productService.updateProduct(anyLong(), ArgumentMatchers.any(CreateProductRequestDTO.class))).thenReturn(mockProduct);
 
         mockMvc.perform(put("/products/1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -137,18 +135,14 @@ public class ProductControllerTest {
 
     @Test
     public void deleteProduct_success() throws Exception {
-     /*   ProductResponseDTO mockProduct = new ProductResponseDTO();
-        mockProduct.setId(1L);
-        mockProduct.setTitle("Product1");
-        mockProduct.setDescription("Description1");
-        mockProduct.setPrice(10.0);
+        Long productId = 1L;
+        String successMessage = "Product with ID " + productId + " has been successfully deleted.";
 
-        Mockito.when(productService.deleteProduct(anyLong())).thenReturn(mockProduct);
+        when(productService.deleteProduct(productId)).thenReturn(successMessage);
 
-        mockMvc.perform(delete("/products/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(mockProduct)))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/products/{id}", productId)
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value(mockProduct.getTitle()));*/
+                .andExpect(content().string(successMessage));
     }
 }

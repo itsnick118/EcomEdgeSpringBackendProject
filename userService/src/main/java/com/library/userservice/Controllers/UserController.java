@@ -28,7 +28,8 @@ public class UserController {
         User user= userService.signUp(
                 signUpRequestDto.getEmail(),
                 signUpRequestDto.getName(),
-                signUpRequestDto.getPassword());
+                signUpRequestDto.getPassword(),
+                signUpRequestDto.getRole());
         return UserDto.from(user);
     }
 

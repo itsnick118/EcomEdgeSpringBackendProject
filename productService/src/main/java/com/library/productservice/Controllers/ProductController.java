@@ -32,28 +32,13 @@ public class ProductController {
         this.restTemplate = restTemplate;
     }
 
-    /*   @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id, @RequestHeader ("authToken") String token) throws ProductNotFoundException {
-        UserDto userDto= authCommons.validateToken(token);
-        ResponseEntity<Product> responseEntity;
-
-        if(userDto== null){
-            responseEntity=new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
-            return responseEntity;
-        }
-
-        Product product = productService.getProductById(id);
-
-        responseEntity = new ResponseEntity<>(product, HttpStatus.OK);
-        return responseEntity;
-    }*/
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody CreateProductRequestDTO product){
         ProductResponseDTO savedProduct= productService.createProduct(product);
         return new ResponseEntity<>(savedProduct, HttpStatus.OK);
     }
 
-    @GetMapping()
+    @GetMapping("/")
     public List<ProductResponseDTO> getAllProduct() throws ProductNotFoundException {
         return productService.getAllProducts();
     }
